@@ -6,26 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-#  build-windows:
-#    runs-on: windows-latest
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        configuration: [debug, release]
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: recursive
-#      - uses: albin-johansson/download-sdl2@v1
-#        with:
-#          version: 2.0.14
-#          sources_destination: .
-#          binaries_destination: bin
-#      - name: Build
-#        run: |
-#          ./waf configure -T ${{ matrix.configuration }}
-#          ./waf build
-
   build-linux:
     runs-on: ubuntu-${{ matrix.ubuntu_version }}
     strategy:
@@ -57,8 +37,9 @@ jobs:
         run: |
           ./waf configure -T ${{ matrix.configuration }}
           ./waf build
-                - uses: 
-             actions/upload-artifact@v2
-      - with:
-          name: app-debug-noruntime
+          
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: app-debug
           path: /home/runner/work/source-engine/source-engine/build/
