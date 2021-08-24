@@ -59,29 +59,7 @@ jobs:
           ./waf build
       - name: Upload a Build Artifact
       - uses: actions/upload-artifact@v2
-      - with: Artifact name
-      - path: /home/runner/work/source-engine/source-engine/build/
-
-#  build-macos:
-#    runs-on: macos-latest
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        configuration: [debug, release]
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: recursive
-#      - name: Install dependencies
-#        env:
-#          HOMEBREW_NO_ANALYTICS: 1
-#        run: |
-#          brew update
-#          brew install binutils llvm
-#      - name: Build
-#        run: |
-#          echo 'export PATH="/usr/local/opt/binutils/bin:$PATH"' >> /Users/runner/.bash_profile
-#          export LDFLAGS="-L/usr/local/opt/binutils/lib"
-#          export CPPFLAGS="-I/usr/local/opt/binutils/include"
-#          ./waf configure -T ${{ matrix.configuration }}
-#          ./waf build
+      - with:
+          name: app-debug-noruntime
+          path: /home/runner/work/source-engine/source-engine/build/
+      
