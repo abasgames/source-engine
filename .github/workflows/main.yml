@@ -80,3 +80,8 @@ jobs:
 #          export CPPFLAGS="-I/usr/local/opt/binutils/include"
 #          ./waf configure -T ${{ matrix.configuration }}
 #          ./waf build
+- name: Upload a Build Artifact
+  - uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: /home/runner/work/source-engine/source-engine/build/
