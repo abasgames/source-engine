@@ -57,8 +57,8 @@ jobs:
         run: |
           ./waf configure -T ${{ matrix.configuration }}
           ./waf build
+          
       - name: Upload a Build Artifact
-        run: |
       - uses: actions/upload-artifact@v2
       - with:
           name: app-debug-noruntime
